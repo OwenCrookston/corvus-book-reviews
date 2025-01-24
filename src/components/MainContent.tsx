@@ -5,9 +5,8 @@ import BookTile from "./BookTile/index.tsx";
 function MainContent() {
     return (
         <div className="main-content">
-            <div>I'm the main content</div>
             {reviews.map((review) => {
-                return <BookTile data={review} />;
+                return <BookTile key={review.date} data={review} />;
             })}
         </div>
     );

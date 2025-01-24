@@ -4,6 +4,7 @@ type BookTile = {
     author: string;
     date: string;
     published: string;
+    series?: string;
 };
 
 type BookReview = BookTile & {

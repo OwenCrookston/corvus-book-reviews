@@ -3,11 +3,13 @@ import React from "react";
 function BookTile({ data }: { data: BookTile }) {
     const dynamicClasses: string[] = [];
     return (
-        <div className={`Booktile ${dynamicClasses.join(" ")}`}>
+        <div className={`book-tile ${dynamicClasses.join(" ")}`}>
             <img
-                class="fit-picture"
-                src="/media/cc0-images/grapefruit-slice-332-332.jpg"
-                alt="Grapefruit slice atop a pile of other slices"
+                className="book-cover"
+                src={data.cover}
+                alt={`${data.title} cover`}
+                width="200px"
+                height="200px"
             />
             <div className="title">{data.title}</div>
             <div className="author">{data.author}</div>
