@@ -13,7 +13,7 @@ export const liesOfLockeLamora: BookReview = {
 reviews.push(liesOfLockeLamora);
 
 const stormFront: BookReview = {
-    cover: "/covers/storm_front_600x600bb.jpg",
+    cover: `${process.env.PUBLIC_URL}/covers/storm_front_600x600bb.jpg`,
     title: "Storm Front",
     author: "Jim Butcher",
     published: "April 1 2000",
@@ -25,7 +25,7 @@ const stormFront: BookReview = {
 reviews.push(stormFront);
 
 const foolMoon: BookReview = {
-    cover: "/covers/fool_moon_600x600bb.jpg",
+    cover: `${process.env.PUBLIC_URL}/covers/fool_moon_600x600bb.jpg`,
     title: "Fool Moon",
     author: "Jim Butcher",
     published: "January 1st 2001",
@@ -37,7 +37,7 @@ const foolMoon: BookReview = {
 reviews.push(foolMoon);
 
 const gravePeril: BookReview = {
-    cover: "/covers/grave_peril_600x600bb.jpg",
+    cover: `${process.env.PUBLIC_URL}/covers/grave_peril_600x600bb.jpg`,
     title: "Lies of Locke Lamora",
     author: "Scott Lynch",
     published: "January 1st 2000",
@@ -49,7 +49,7 @@ const gravePeril: BookReview = {
 reviews.push(gravePeril);
 
 const summerKnight: BookReview = {
-    cover: "/covers/summer_knight_600x600bb.jpg",
+    cover: `${process.env.PUBLIC_URL}/covers/summer_knight_600x600bb.jpg`,
     title: "Summer Knight",
     author: "Jim Butcher",
     published: "September 3rd 2002",
@@ -61,7 +61,7 @@ const summerKnight: BookReview = {
 reviews.push(summerKnight);
 
 const deathMasks: BookReview = {
-    cover: "/covers/death_masks_600x600bb.jpg",
+    cover: `${process.env.PUBLIC_URL}/covers/death_masks_600x600bb.jpg`,
     title: "Death Masks",
     author: "Jim Butcher",
     published: "August 5th 2003",
