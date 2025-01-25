@@ -1,7 +1,7 @@
 const reviews: BookReview[] = [];
 
 export const liesOfLockeLamora: BookReview = {
-    cover: "%PUBLIC_URL%/covers/lies_of_locke_lamora_600x600bb.jpg",
+    cover: `${process.env.PUBLIC_URL}/covers/lies_of_locke_lamora_600x600bb.jpg`,
     title: "Lies of Locke Lamora",
     author: "Scott Lynch",
     published: "January 1st 2000",
