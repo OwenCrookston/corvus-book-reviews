@@ -19,10 +19,8 @@ function BookTile({ bookTile, bookTileClickHandler }: BookTileProps) {
                 src={bookTile.cover}
                 alt={`${bookTile.title} cover`}
                 width="200px"
-                height="200px"
+                height="225px"
             />
-            <div className="title">{bookTile.title}</div>
-            <div className="author">{bookTile.author}</div>
         </div>
     );
 }

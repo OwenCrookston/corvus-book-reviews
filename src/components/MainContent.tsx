@@ -29,18 +29,20 @@ function MainContent({
                     exitReviewClickHandler={exitReviewClickHandler}
                 />
             ) : (
-                reviews.map((review) => {
-                    return (
-                        <BookTile
-                            key={formatReviewKey(
-                                review.author,
-                                review.published
-                            )}
-                            bookTile={review}
-                            bookTileClickHandler={bookTileClickHandler}
-                        />
-                    );
-                })
+                <div className="book-tiles-container">
+                    {reviews.map((review) => {
+                        return (
+                            <BookTile
+                                key={formatReviewKey(
+                                    review.author,
+                                    review.published
+                                )}
+                                bookTile={review}
+                                bookTileClickHandler={bookTileClickHandler}
+                            />
+                        );
+                    })}
+                </div>
             )}
         </div>
     );

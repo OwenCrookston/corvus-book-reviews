@@ -6,8 +6,8 @@ type BookReviewProps = {
 };
 function BookReview({ review, exitReviewClickHandler }: BookReviewProps) {
     return (
-        <div className="book-review">
-            <div className="hidden-overflow">
+        <div className="book-review-container">
+            <div className="book-review">
                 <div className="flex-last-right">
                     <div className="review-title">{review.title}</div>
                     <button
