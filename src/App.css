@@ -27,14 +27,20 @@
 .sidebar {
     background-color: blue;
     height: 100vh;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
 }
 
 .main-content {
     background-color: gray;
     height: 100vh;
+    overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: flex-start;
+    padding: 2em;
 }
 
 .book-tile {
@@ -44,8 +50,69 @@
     width: 200px;
     height: 250px;
     margin: 1em;
+    &:hover {
+        outline: medium solid green;
+    }
 }
 
 .book-cover {
     margin-bottom: 0.5em;
+}
+
+.book-review {
+    width: 75%;
+    height: auto;
+    max-height: 90%;
+    background-color: wheat;
+    overflow: hidden;
+    padding: 0.5em;
+    border-radius: 1em;
+    .review-title {
+        font-size: 3em;
+        grid-column-start: 2;
+    }
+    .review-author {
+        font-size: 2em;
+    }
+    .review-date {
+        font-size: 2em;
+    }
+    .review-content {
+        padding: 1em;
+        font-size: 1em;
+    }
+}
+
+.hidden-overflow {
+    height: 100%;
+    overflow: auto;
+}
+
+.flex-last-right {
+    display: grid;
+    grid-template-columns: 1.5fr 10fr 1fr;
+    align-items: center;
+    :last-child {
+        align-self: flex-start;
+        justify-self: right;
+    }
+}
+
+.close-button {
+    background-color: wheat;
+    border: none;
+    margin: 0.5em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    img {
+        height: inherit;
+        width: inherit;
+        &:hover {
+            box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+        }
+    }
 }

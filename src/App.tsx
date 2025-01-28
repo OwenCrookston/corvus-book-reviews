@@ -3,14 +3,21 @@ import React from "react";
 import MainContent from "./components/MainContent.tsx";
 import Sidebar from "./components/Sidebar.tsx";
 import { useState } from "react";
+import { formatReviewKey } from "./util/reviewKeyFormatter.ts";
 
 function App() {
     const [sidebarOpen, setSidebar] = useState(false);
     const dynamicClasses: string[] = [];
     sidebarOpen ? dynamicClasses.push("open") : dynamicClasses.push("closed");
+    const [readingReview, setReadingReview] = useState("");
+    const bookTileClickHandler = (author: string, published: string) => {
+        setReadingReview(formatReviewKey(author, published));
+    };
+    const exitReviewClickHandler = () => {
+        setReadingReview("");
+    };
 
     const handleSidebarChange = () => {
-        console.log("change");
         setSidebar(!sidebarOpen);
     };
 
@@ -20,7 +27,11 @@ function App() {
                 open={sidebarOpen}
                 handleSidebarChange={handleSidebarChange}
             />
-            <MainContent />
+            <MainContent
+                bookTileClickHandler={bookTileClickHandler}
+                exitReviewClickHandler={exitReviewClickHandler}
+                readingReview={readingReview}
+            />
         </div>
     );
 }
