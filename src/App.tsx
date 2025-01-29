@@ -1,7 +1,7 @@
 import "./App.css";
 import React from "react";
 import MainContent from "./components/MainContent.tsx";
-import Sidebar from "./components/Sidebar.tsx";
+import Sidebar from "./components/SideBar/Sidebar.tsx";
 import { useState } from "react";
 import { formatReviewKey } from "./util/reviewKeyFormatter.ts";
 

@@ -1,4 +1,5 @@
 import React from "react";
+import SearchButton from "./SearchButton.tsx";
 
 type SidebarProps = {
     open: boolean;
@@ -9,13 +10,17 @@ function Sidebar({ open, handleSidebarChange }: SidebarProps) {
     const dynamicClasses: string[] = [];
     open ? dynamicClasses.push("open") : dynamicClasses.push("closed");
 
-    return (
+    return open ? (
         <div className={`sidebar ${dynamicClasses.join(" ")}`}>
-            <button type="button" onClick={() => handleSidebarChange()}>
-                I'm the Button
-            </button>
-            <div>I'm the sidebar</div>
+            <div>
+                <SearchButton
+                    handleSidebarChange={() => handleSidebarChange()}
+                />
+                I'm the sidebar
+            </div>
         </div>
+    ) : (
+        <SearchButton handleSidebarChange={() => handleSidebarChange()} />
     );
 }
 

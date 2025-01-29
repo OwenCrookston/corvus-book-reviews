@@ -2,9 +2,9 @@
     height: 100vh;
     text-align: center;
     display: grid;
-    grid-template-columns: 1fr 6fr;
+    grid-template-columns: 200px 1fr;
     &.closed {
-        grid-template-columns: 1fr 15fr;
+        grid-template-columns: 0px 1fr;
     }
     grid-template-rows: 1fr;
     background-color: gray;
@@ -25,6 +25,19 @@
     color: #61dafb;
 }
 
+.search-bar-button {
+    z-index: 1;
+    background-color: inherit;
+    border: none;
+    margin: 2em;
+    height: 30px;
+    width: 30px;
+    img {
+        height: inherit;
+        width: inherit;
+    }
+}
+
 .sidebar {
     background-color: blue;
     height: inherit;
@@ -40,6 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-column: 2 / 2;
 }
 
 .book-tiles-container {
@@ -76,13 +90,15 @@
     background-color: wheat;
     overflow: hidden;
     border-radius: 1em;
+    box-shadow: 5px 5px rgb(0 0 0 / 20%);
 }
 
 .book-review {
     height: 100%;
     overflow: auto;
-    padding: 0.5em;
+    padding: 1em;
     border-radius: 1em;
+    padding: 1em;
 
     .review-title {
         font-size: 3em;
@@ -114,9 +130,9 @@
 }
 
 .close-button {
+    position: absolute;
     background-color: wheat;
     border: none;
-    margin: 0.5em;
     display: flex;
     align-items: center;
     justify-content: center;
