@@ -12,12 +12,18 @@ function Sidebar({ open, handleSidebarChange }: SidebarProps) {
 
     return open ? (
         <div className={`sidebar ${dynamicClasses.join(" ")}`}>
-            <div>
+            <div className="search-icon-row">
                 <SearchButton
                     handleSidebarChange={() => handleSidebarChange()}
                 />
-                I'm the sidebar
+                Search
             </div>
+            <input type="search" placeholder="Title / Author" maxLength={30} />
+            <select>
+                <option value="">--Year Read--</option>
+                <option value="2025">2025</option>
+            </select>
+            <div>Top Lists</div>
         </div>
     ) : (
         <SearchButton handleSidebarChange={() => handleSidebarChange()} />

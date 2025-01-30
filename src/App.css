@@ -29,21 +29,34 @@
     z-index: 1;
     background-color: inherit;
     border: none;
-    margin: 2em;
+    margin: 1em;
     height: 30px;
     width: 30px;
     img {
         height: inherit;
         width: inherit;
     }
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .sidebar {
-    background-color: blue;
-    height: inherit;
-    position: sticky;
-    position: -webkit-sticky;
-    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(185, 201, 193);
+    border-radius: 1em;
+    margin: 1em 0 1em 1em;
+    padding: 1em 1em 2em 1em;
+    height: fit-content;
+}
+
+.search-icon-row {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 1.5em;
 }
 
 .main-content {
@@ -67,7 +80,9 @@
 .book-tile {
     display: flex;
     flex-direction: column;
-    background-color: bisque;
+    justify-content: center;
+    height: 225px;
+    width: 200px;
     margin: 1em;
     border-radius: 0.5em;
     overflow: hidden;
@@ -78,7 +93,11 @@
 }
 
 .book-cover {
-    /* margin-bottom: 0.5em; */
+    max-width: 200px;
+    max-height: 225px;
+    width: auto;
+    height: auto;
+    box-shadow: 0px 0px 25px 10px rgba(0, 0, 0, 1);
 }
 
 .book-review-container {
@@ -87,7 +106,7 @@
     width: 75%;
     height: auto;
     max-height: 90%;
-    background-color: wheat;
+    background-color: rgb(255, 223, 191, 1);
     overflow: hidden;
     border-radius: 1em;
     box-shadow: 5px 5px rgb(0 0 0 / 20%);
@@ -131,7 +150,7 @@
 
 .close-button {
     position: absolute;
-    background-color: wheat;
+    background-color: rgb(255, 223, 191, 1);
     border: none;
     display: flex;
     align-items: center;
@@ -143,7 +162,43 @@
         height: inherit;
         width: inherit;
         &:hover {
-            box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
+            filter: drop-shadow(0px 0px 2px rgba(0, 0, 0, 0.8));
         }
+    }
+}
+
+input {
+    text-align: center;
+    text-overflow: ellipsis;
+    border-radius: 1em;
+    height: 40px;
+    padding: 0 1rem 0 1rem;
+    font-size: 0.75em;
+    border: 2px solid rgb(50, 50, 50, 0.33);
+    background-color: rgb(255, 255, 255, 0.8);
+    &:hover {
+        box-shadow: 0 0 2px 2px rgb(50, 50, 50, 0.66);
+    }
+    &:focus {
+        outline: 0;
+        background-color: rgb(225, 225, 225, 0.9);
+    }
+}
+
+select {
+    text-align-last: center;
+    border-radius: 1em;
+    height: 40px;
+    font-size: 0.75em;
+    border: 2px solid rgb(50, 50, 50, 0.33);
+    padding: 0 1rem 0 1rem;
+    background-color: rgb(255, 255, 255, 0.8);
+    &:hover {
+        cursor: pointer;
+        box-shadow: 0 0 2px 2px rgb(50, 50, 50, 0.66);
+    }
+    &:focus {
+        outline: 0;
+        background-color: rgb(225, 225, 225, 0.9);
     }
 }
