@@ -8,11 +8,14 @@ import { formatReviewKey } from "./util/reviewKeyFormatter.ts";
 function App() {
     const [sidebarOpen, setSidebar] = useState(false);
     const dynamicClasses: string[] = [];
-    sidebarOpen ? dynamicClasses.push("open") : dynamicClasses.push("closed");
     const [readingReview, setReadingReview] = useState("");
     const bookTileClickHandler = (author: string, published: string) => {
         setReadingReview(formatReviewKey(author, published));
     };
+
+    sidebarOpen ? dynamicClasses.push("open") : dynamicClasses.push("closed");
+    if (readingReview !== "") dynamicClasses.push("reading-review");
+
     const exitReviewClickHandler = () => {
         setReadingReview("");
     };
@@ -23,10 +26,12 @@ function App() {
 
     return (
         <div className={`App ${dynamicClasses.join(" ")}`}>
-            <Sidebar
-                open={sidebarOpen}
-                handleSidebarChange={handleSidebarChange}
-            />
+            {!readingReview && (
+                <Sidebar
+                    open={sidebarOpen}
+                    handleSidebarChange={handleSidebarChange}
+                />
+            )}
             <MainContent
                 bookTileClickHandler={bookTileClickHandler}
                 exitReviewClickHandler={exitReviewClickHandler}

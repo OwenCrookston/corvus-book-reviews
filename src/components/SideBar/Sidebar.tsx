@@ -24,6 +24,7 @@ function Sidebar({ open, handleSidebarChange }: SidebarProps) {
                         type="search"
                         placeholder="Title / Author"
                         maxLength={30}
+                        va
                     />
                     <select>
                         <option value="">--Year Read--</option>
