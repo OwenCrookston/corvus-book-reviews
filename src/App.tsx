@@ -1,27 +1,60 @@
+import React, { useEffect, useState } from "react";
 import "./App.css";
-import React from "react";
 import MainContent from "./components/MainContent.tsx";
 import Sidebar from "./components/SideBar/Sidebar.tsx";
-import { useState } from "react";
-import { formatReviewKey } from "./util/reviewKeyFormatter.ts";
+import reviewLibrary, { BookReview } from "./reviews/bookReviews.ts";
 
 function App() {
-    const [sidebarOpen, setSidebar] = useState(false);
+    const [sidebarOpen, setSidebar] = useState<boolean>(false);
     const dynamicClasses: string[] = [];
-    const [readingReview, setReadingReview] = useState("");
-    const bookTileClickHandler = (author: string, published: string) => {
-        setReadingReview(formatReviewKey(author, published));
-    };
+    const [readingReview, setReadingReview] = useState<BookReview | undefined>(
+        undefined
+    );
+    const [searching, setSearching] = useState<string>("");
+    const [reviewYear, setReviewYear] = useState<undefined | number>(undefined);
+    const [matchingReviews, setMatchingReviews] =
+        useState<BookReview[]>(reviewLibrary);
+
+    useEffect(() => {
+        setMatchingReviews(
+            reviewLibrary.filter((review) => {
+                const titleOrAuthorMatch =
+                    review.title
+                        .toLowerCase()
+                        .includes(searching.toLowerCase()) ||
+                    review.author
+                        .toLowerCase()
+                        .includes(searching.toLowerCase());
+                const yearMatch = reviewYear
+                    ? review.yearReviewed === reviewYear
+                    : true;
+
+                return titleOrAuthorMatch && yearMatch;
+            })
+        );
+    }, [searching, reviewYear]);
 
     sidebarOpen ? dynamicClasses.push("open") : dynamicClasses.push("closed");
-    if (readingReview !== "") dynamicClasses.push("reading-review");
+    if (readingReview !== undefined) dynamicClasses.push("reading-review");
+
+    const bookTileClickHandler = (reading: BookReview) => {
+        setReadingReview(reading);
+    };
 
     const exitReviewClickHandler = () => {
-        setReadingReview("");
+        setReadingReview(undefined);
     };
 
     const handleSidebarChange = () => {
         setSidebar(!sidebarOpen);
+    };
+
+    const handleSearch = (searching: string) => {
+        setSearching(searching);
+    };
+
+    const handleChangeReviewYear = (year: string) => {
+        setReviewYear(year ? Number(year) : undefined);
     };
 
     return (
@@ -30,12 +63,16 @@ function App() {
                 <Sidebar
                     open={sidebarOpen}
                     handleSidebarChange={handleSidebarChange}
+                    searching={searching}
+                    handleSearch={handleSearch}
+                    handleYearChange={handleChangeReviewYear}
                 />
             )}
             <MainContent
                 bookTileClickHandler={bookTileClickHandler}
                 exitReviewClickHandler={exitReviewClickHandler}
-                readingReview={readingReview}
+                activeReview={readingReview}
+                reviews={matchingReviews}
             />
         </div>
     );

@@ -1,4 +1,18 @@
-const reviews: BookReview[] = [];
+export type BookTile = {
+    cover: string;
+    title: string;
+    author: string;
+    date: string;
+    published: string;
+    series?: string;
+    yearReviewed: number;
+};
+
+export type BookReview = BookTile & {
+    content: string;
+};
+
+const reviewLibrary: BookReview[] = [];
 
 export const liesOfLockeLamora: BookReview = {
     cover: `${process.env.PUBLIC_URL}/covers/lies_of_locke_lamora_600x600bb.jpg`,
@@ -7,10 +21,11 @@ export const liesOfLockeLamora: BookReview = {
     published: "January 1st 2000",
     date: "January 24th 2024",
     series: "The Gentleman Bastards",
+    yearReviewed: 2025,
     content:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam!",
 };
-reviews.push(liesOfLockeLamora);
+reviewLibrary.push(liesOfLockeLamora);
 
 const stormFront: BookReview = {
     cover: `${process.env.PUBLIC_URL}/covers/storm_front_600x600bb.jpg`,
@@ -19,10 +34,11 @@ const stormFront: BookReview = {
     published: "April 1 2000",
     date: "January 24th 2024",
     series: "Dresden Files",
+    yearReviewed: 2024,
     content:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam!",
 };
-reviews.push(stormFront);
+reviewLibrary.push(stormFront);
 
 const foolMoon: BookReview = {
     cover: `${process.env.PUBLIC_URL}/covers/fool_moon_600x600bb.jpg`,
@@ -31,10 +47,11 @@ const foolMoon: BookReview = {
     published: "January 1st 2001",
     date: "January 24th 2024",
     series: "Dresden Files",
+    yearReviewed: 2024,
     content:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam!",
 };
-reviews.push(foolMoon);
+reviewLibrary.push(foolMoon);
 
 const gravePeril: BookReview = {
     cover: `${process.env.PUBLIC_URL}/covers/grave_peril_600x600bb.jpg`,
@@ -43,10 +60,11 @@ const gravePeril: BookReview = {
     published: "September 1st 2001",
     date: "January 24th 2024",
     series: "Dresden Files",
+    yearReviewed: 2025,
     content:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam!",
 };
-reviews.push(gravePeril);
+reviewLibrary.push(gravePeril);
 
 const summerKnight: BookReview = {
     cover: `${process.env.PUBLIC_URL}/covers/summer_knight_600x600bb.jpg`,
@@ -55,10 +73,11 @@ const summerKnight: BookReview = {
     published: "September 3rd 2002",
     date: "January 24th 2024",
     series: "Dresden Files",
+    yearReviewed: 2025,
     content:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam!",
 };
-reviews.push(summerKnight);
+reviewLibrary.push(summerKnight);
 
 const deathMasks: BookReview = {
     cover: `${process.env.PUBLIC_URL}/covers/death_masks_600x600bb.jpg`,
@@ -67,9 +86,10 @@ const deathMasks: BookReview = {
     published: "August 5th 2003",
     date: "January 24th 2024",
     series: "Dresden Files",
+    yearReviewed: 2025,
     content:
         "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consectetur esse quis ipsa! Illo aliquam quos rerum enim corporis praesentium nulla fugiat, repudiandae est? Nihil dicta quisquam illo in tempore nam!",
 };
-reviews.push(deathMasks);
+reviewLibrary.push(deathMasks);
 
-export default reviews;
+export default reviewLibrary;

@@ -1,10 +1,11 @@
 import React from "react";
+import { BookReview } from "../../reviews/bookReviews";
 
 type BookReviewProps = {
     review: BookReview;
     exitReviewClickHandler: () => void;
 };
-function BookReview({ review, exitReviewClickHandler }: BookReviewProps) {
+function Review({ review, exitReviewClickHandler }: BookReviewProps) {
     return (
         <div className="book-review-container">
             <div className="book-review">
@@ -29,4 +30,4 @@ function BookReview({ review, exitReviewClickHandler }: BookReviewProps) {
     );
 }
 
-export default BookReview;
+export default Review;

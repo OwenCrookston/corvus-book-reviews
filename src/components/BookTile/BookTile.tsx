@@ -1,8 +1,9 @@
 import React from "react";
+import { BookReview } from "../../reviews/bookReviews";
 
 type BookTileProps = {
-    bookTile: BookTile;
-    bookTileClickHandler: (author: string, published: string) => void;
+    bookTile: BookReview;
+    bookTileClickHandler: (reading: BookReview) => void;
 };
 
 function BookTile({ bookTile, bookTileClickHandler }: BookTileProps) {
@@ -10,9 +11,7 @@ function BookTile({ bookTile, bookTileClickHandler }: BookTileProps) {
     return (
         <div
             className={`book-tile ${dynamicClasses.join(" ")}`}
-            onClick={() =>
-                bookTileClickHandler(bookTile.author, bookTile.published)
-            }
+            onClick={() => bookTileClickHandler(bookTile)}
         >
             <img
                 className="book-cover"

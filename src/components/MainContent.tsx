@@ -1,31 +1,27 @@
 import React from "react";
-import reviews from "../reviews/reviews.ts";
 import { formatReviewKey } from "../util/reviewKeyFormatter.ts";
 import BookTile from "./BookTile/BookTile.tsx";
-import BookReview from "./BookReview/BookReview.tsx";
+import Review from "./BookReview/BookReview.tsx";
+import { BookReview } from "../reviews/reviews.ts";
 
 type MainContentProps = {
-    bookTileClickHandler: (author: string, published: string) => void;
+    bookTileClickHandler: (reading: BookReview) => void;
     exitReviewClickHandler: () => void;
-    readingReview: string;
+    activeReview: BookReview | undefined;
+    reviews: BookReview[];
 };
 
 function MainContent({
     bookTileClickHandler,
     exitReviewClickHandler,
-    readingReview,
+    activeReview,
+    reviews,
 }: MainContentProps) {
-    console.log(readingReview);
-    const review = reviews.find(
-        (review) =>
-            formatReviewKey(review.author, review.published) === readingReview
-    );
-
     return (
         <div className="main-content">
-            {review ? (
-                <BookReview
-                    review={review}
+            {!!activeReview ? (
+                <Review
+                    review={activeReview}
                     exitReviewClickHandler={exitReviewClickHandler}
                 />
             ) : (
