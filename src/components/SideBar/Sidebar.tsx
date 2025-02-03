@@ -6,6 +6,7 @@ type SidebarProps = {
     handleSidebarChange: () => void;
     searching: string;
     handleSearch: (searching: string) => void;
+    yearSearch: number | undefined;
     handleYearChange: (year: string) => void;
 };
 
@@ -13,6 +14,7 @@ function Sidebar({
     open,
     handleSidebarChange,
     searching,
+    yearSearch,
     handleSearch,
     handleYearChange,
 }: SidebarProps) {
@@ -36,17 +38,22 @@ function Sidebar({
                         value={searching}
                         onChange={(e) => handleSearch(e.target.value)}
                     />
-                    <select onChange={(e) => handleYearChange(e.target.value)}>
+                    <select
+                        value={yearSearch}
+                        onChange={(e) => handleYearChange(e.target.value)}
+                    >
                         <option value="">--Year Read--</option>
                         <option value="2024">2024</option>
                         <option value="2025">2025</option>
                     </select>
-                    <div>Top Lists</div>
+                    {/* <div>Top Lists</div> */}
                 </div>
             ) : (
-                <SearchButton
-                    handleSidebarChange={() => handleSidebarChange()}
-                />
+                <div className="closed-search-button">
+                    <SearchButton
+                        handleSidebarChange={() => handleSidebarChange()}
+                    />
+                </div>
             )}
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState, PointerEvent } from "react";
 import "./App.css";
 import MainContent from "./components/MainContent.tsx";
 import Sidebar from "./components/SideBar/Sidebar.tsx";
@@ -14,6 +14,10 @@ function App() {
     const [reviewYear, setReviewYear] = useState<undefined | number>(undefined);
     const [matchingReviews, setMatchingReviews] =
         useState<BookReview[]>(reviewLibrary);
+    const [coordinates, setCoordinates] = useState<[x: number, y: number]>([
+        0, 0,
+    ]);
+    const appRef = useRef<null | HTMLDivElement>(null);
 
     useEffect(() => {
         setMatchingReviews(
@@ -37,8 +41,16 @@ function App() {
     sidebarOpen ? dynamicClasses.push("open") : dynamicClasses.push("closed");
     if (readingReview !== undefined) dynamicClasses.push("reading-review");
 
-    const bookTileClickHandler = (reading: BookReview) => {
+    const bookTileClickHandler = (
+        reading: BookReview,
+        e: PointerEvent,
+        bookTileRef: React.RefObject<null | HTMLDivElement>
+    ) => {
         setReadingReview(reading);
+        // this will be used to scroll to the same (ish) place in the review list when exiting a review
+        if (bookTileRef && bookTileRef.current) {
+            setCoordinates([e.clientX, bookTileRef.current.offsetTop]);
+        }
     };
 
     const exitReviewClickHandler = () => {
@@ -58,12 +70,13 @@ function App() {
     };
 
     return (
-        <div className={`App ${dynamicClasses.join(" ")}`}>
+        <div className={`App ${dynamicClasses.join(" ")}`} ref={appRef}>
             {!readingReview && (
                 <Sidebar
                     open={sidebarOpen}
                     handleSidebarChange={handleSidebarChange}
                     searching={searching}
+                    yearSearch={reviewYear}
                     handleSearch={handleSearch}
                     handleYearChange={handleChangeReviewYear}
                 />
@@ -73,6 +86,8 @@ function App() {
                 exitReviewClickHandler={exitReviewClickHandler}
                 activeReview={readingReview}
                 reviews={matchingReviews}
+                scrollRef={appRef}
+                coordinates={coordinates}
             />
         </div>
     );

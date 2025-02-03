@@ -1,14 +1,20 @@
-import React from "react";
+import React, { PointerEvent, useEffect } from "react";
 import { formatReviewKey } from "../util/reviewKeyFormatter.ts";
 import BookTile from "./BookTile/BookTile.tsx";
 import Review from "./BookReview/BookReview.tsx";
-import { BookReview } from "../reviews/reviews.ts";
+import { BookReview } from "../reviews/bookReviews.ts";
 
 type MainContentProps = {
-    bookTileClickHandler: (reading: BookReview) => void;
+    bookTileClickHandler: (
+        reading: BookReview,
+        e: PointerEvent,
+        bookTileRef: React.RefObject<null>
+    ) => void;
     exitReviewClickHandler: () => void;
     activeReview: BookReview | undefined;
     reviews: BookReview[];
+    scrollRef: React.RefObject<null | HTMLDivElement>;
+    coordinates: [x: number, y: number];
 };
 
 function MainContent({
@@ -16,9 +22,24 @@ function MainContent({
     exitReviewClickHandler,
     activeReview,
     reviews,
+    scrollRef,
+    coordinates,
 }: MainContentProps) {
+    const dynamicClasses = ["main-content"];
+    if (activeReview) dynamicClasses.push("reading-review");
+
+    useEffect(() => {
+        if (scrollRef && scrollRef.current) {
+            if (!activeReview) {
+                scrollRef.current.scrollTo(coordinates[0], coordinates[1]);
+            } else {
+                scrollRef.current.scrollTo(0, 0);
+            }
+        }
+    }, [activeReview, coordinates, scrollRef]);
+
     return (
-        <div className="main-content">
+        <div className={dynamicClasses.join(" ")}>
             {!!activeReview ? (
                 <Review
                     review={activeReview}
