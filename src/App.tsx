@@ -3,6 +3,7 @@ import "./App.css";
 import MainContent from "./components/MainContent.tsx";
 import Sidebar from "./components/SideBar/Sidebar.tsx";
 import reviewLibrary, { BookReview } from "./reviews/bookReviews.ts";
+import { getEmValue } from "./util/getEmIntoPx.ts";
 
 function App() {
     const [sidebarOpen, setSidebar] = useState<boolean>(false);
@@ -49,7 +50,11 @@ function App() {
         setReadingReview(reading);
         // this will be used to scroll to the same (ish) place in the review list when exiting a review
         if (bookTileRef && bookTileRef.current) {
-            setCoordinates([e.clientX, bookTileRef.current.offsetTop]);
+            const emIntoPx = getEmValue("div");
+            setCoordinates([
+                e.clientX,
+                bookTileRef.current.offsetTop - 3 * emIntoPx,
+            ]);
         }
     };
 

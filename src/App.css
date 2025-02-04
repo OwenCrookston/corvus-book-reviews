@@ -40,10 +40,12 @@
 .sidebar-container {
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .closed-search-button {
     margin-top: 3.25em;
+    position: fixed;
 }
 
 .search-bar-button {
@@ -68,7 +70,7 @@
 }
 
 .sidebar {
-    position: absolute;
+    position: fixed;
     display: flex;
     flex-direction: column;
     gap: 10px;
