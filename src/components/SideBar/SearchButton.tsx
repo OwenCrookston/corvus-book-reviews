@@ -11,10 +11,7 @@ function SearchButton({ handleSidebarChange }: SearchButtonProps) {
             className="search-bar-button"
             onClick={() => handleSidebarChange()}
         >
-            <img
-                src={`${process.env.PUBLIC_URL}/icons/search-svgrepo-com.svg`}
-                alt="search button"
-            />
+            <img src={"./icons/search-svgrepo-com.svg"} alt="search button" />
         </button>
     );
 }

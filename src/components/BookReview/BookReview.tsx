@@ -17,7 +17,7 @@ function Review({ review, exitReviewClickHandler }: BookReviewProps) {
                         onClick={() => exitReviewClickHandler()}
                     >
                         <img
-                            src={`${process.env.PUBLIC_URL}/icons/close-x-svgrepo-com.svg`}
+                            src={"./icons/close-x-svgrepo-com.svg"}
                             alt="close"
                         />
                     </button>
