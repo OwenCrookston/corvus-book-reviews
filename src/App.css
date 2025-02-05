@@ -11,17 +11,21 @@
     --dark-base: 20, 24, 28;
 }
 
+html {
+    background: linear-gradient(
+            to bottom,
+            rgba(var(--light-base), 1),
+            rgba(var(--dark-base), 1)
+        ),
+        black;
+}
+
 .App {
     height: 100vh;
     text-align: center;
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-template-rows: 1fr;
-    background-image: linear-gradient(
-        to bottom,
-        rgba(var(--light-base), 1),
-        rgba(var(--dark-base), 1)
-    );
     overflow-y: scroll;
     padding-right: 3em;
     &.closed {
